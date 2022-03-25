@@ -2,27 +2,25 @@
 # See: https://circleci.com/docs/2.0/configuration-reference
 version: 2.1
 
+# Define a job to be invoked later in a workflow.
+# See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
-  # Other jobs
-
-  # 👇 Adds Chromatic as a job
-  chromatic-deployment: 
+  say-hello:
+    # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
+    # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
     docker:
-      - image: circleci/node:12
-    working_directory: ~/repo
+      - image: cimg/base:stable
+    # Add steps to the job
+    # See: https://circleci.com/docs/2.0/configuration-reference/#steps
     steps:
       - checkout
-      - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "package.json" }}
-            - v1-dependencies-
-      - run: npm install
-        # 👇 Runs the Chromatic CLI
-      - run: npm run chromatic --project-token=${CHROMATIC_PROJECT_TOKEN}
+      - run:
+          name: "Say hello"
+          command: "echo Hello, World!"
 
-
+# Invoke jobs via workflows
+# See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
-  # 👇 Adds Chromatic to the workflow
-  chromatic-deploy:
+  say-hello-workflow:
     jobs:
-      - chromatic-deployment # 👈 Runs the Chromatic job implemented above
+      - say-hello

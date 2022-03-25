@@ -39,7 +39,7 @@ export const Header = ({
               fill="#555AB9"
             />
             <path
-              d="M27.2 10.6v11.2l-10.5 6V16.5l10.5-6zM15.7 4.4v11L6 10l9.7-5.5z"
+              d="M27.2 9.5v11.2l-10.5 6V16.5l10.5-6zM15.7 4.4v11L6 10l9.7-5.5z"
               fill="#91BAF8"
             />
           </g>
@@ -50,10 +50,10 @@ export const Header = ({
         {user ? (
           <>
             <span className="welcome">
-              Hello, <b>{user.name}</b>!
+              Hello bello, <b>{user.name}</b>!
             </span>
             <Button size="small" onClick={onLogout} label="Log out" />
-            <Button size="small" onClick={onLogout} label="Log out" />
+            <Button size="small" onClick={onLogout} label="Log iinouout" />
           </>
         ) : (
           <>
